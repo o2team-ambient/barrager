@@ -1,0 +1,15 @@
+{
+  "name": "barrager",
+  "version": "1.0.0",
+  "description": "挂件库弹幕效果",
+  "scripts": {
+    "start": "ath2 s",
+    "build": "ath2 build",
+    "test": "",
+    "eslint": "eslint */component */page"
+  },
+  "dependencies": {
+    "dat.gui": "^0.7.1",
+    "preloader.js": "^1.0.0"
+  }
+}
