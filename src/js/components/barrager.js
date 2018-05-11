@@ -78,7 +78,7 @@ class BarragerCanvas {
   generateItem() {
     const { opacity, speed, direction, easeType, contents } = this.opts
     const key = this.getRandomKey()
-    const baseLong = 5
+    const baseLong = 8
     const randomIdx = Math.floor(Math.random() * contents.length)
     const content = contents[randomIdx]
     const realSpeed = Math.sqrt(content.length) / Math.sqrt(baseLong) * speed
