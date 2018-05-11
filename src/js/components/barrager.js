@@ -40,7 +40,7 @@ class BarragerCanvas {
     this.canvas.style.height = `${canvasHeight}px`
     this.width = this.canvas.width = canvasWidth
     this.height = this.canvas.height = canvasHeight
-    this.allDistance = direction === 'horizontal' ? this.width + 300 : this.height + 300
+    this.allDistance = direction === 'horizontal' ? this.width : this.height
 
     // 定时随机生成弹幕
     const timeFn = (timeGap) => {
@@ -78,7 +78,11 @@ class BarragerCanvas {
   generateItem() {
     const { opacity, speed, direction, easeType, contents } = this.opts
     const key = this.getRandomKey()
+    const baseLong = 5
     const randomIdx = Math.floor(Math.random() * contents.length)
+    const content = contents[randomIdx]
+    const realSpeed = Math.sqrt(content.length) / Math.sqrt(baseLong) * speed
+    const offset = content.length / baseLong * 150
     const props = {
       startTime: null,
       x: direction === 'vertical' ? Math.floor((Math.random()) * this.width) : 0,
@@ -88,9 +92,10 @@ class BarragerCanvas {
       speed,
       direction,
       easeType,
-      allDistance: this.allDistance,
-      allTime: this.allDistance / speed * 1000,
-      content: contents[randomIdx],
+      allDistance: this.allDistance + offset * 2,
+      allTime: this.allDistance / realSpeed * 1000,
+      content,
+      offset,
       destroy: this.updateBarrager.bind(this)
     }
 
@@ -104,18 +109,25 @@ class BarragerCanvas {
   }
 
   drawItem(item, timestamp) {
-    const { easeType, allDistance, allTime, direction, opacity } = item
+    const { easeType, allDistance, allTime, direction, opacity, offset } = item
     if (!item.startTime) item.startTime = timestamp
-    const timeGap = timestamp - item.startTime
+    if (!item.lastTime) item.lastTime = timestamp
+    // 记录间隔是否过长，是则认为是进入了后台，暂停等，需要更新开始时间
+    let lastGap = timestamp - item.lastTime
+    if (lastGap > 500) {
+      item.startTime = item.startTime + lastGap
+    }
+    let timeGap = timestamp - item.startTime
     if (timeGap < allTime) {
       let moveDis = this.moveFn[easeType](timeGap, 0, allDistance, allTime)
       this.context.fillStyle = `rgba(255, 255, 255, ${opacity})`
       if (direction === 'horizontal') {
-        item.x = allDistance - moveDis - 150
+        item.x = allDistance - moveDis - offset
       } else {
-        item.y = allDistance - moveDis - 150
+        item.y = allDistance - moveDis - offset
       }
       this.context.fillText(item.content, item.x, item.y)
+      item.lastTime = timestamp
     } else {
       item.destroy(item)
     }

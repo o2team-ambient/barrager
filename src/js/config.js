@@ -7,5 +7,5 @@ window[O2_AMBIENT_CONFIG] = {
   direction: 'horizontal',
   easeType: 'linear',
   width: 1200,
-  contents: ['我是测试弹幕1', '我是测试弹幕2', '我是测试弹幕3', '这个弹幕很好用', '我是测试弹幕5']
+  contents: ['两个字', '我是测试弹幕', '我是测试弹幕我是', '这个弹幕很好用这个弹幕', '我是测试弹幕5']
 }
