@@ -41,7 +41,7 @@ class Control {
     this.otherConfig = new OtherConfig()
     this.initBaseGUI()
     this.initTextureGUI()
-    Control.setBackgroundColor(this.otherConfig.backgroundColor)
+    this.setBackgroundColor(this.otherConfig.backgroundColor)
   }
 
   initBaseGUI () {
@@ -86,10 +86,20 @@ class Control {
     this.gui.domElement.parentElement.style.zIndex = zIndex
   }
 
-  static setBackgroundColor (color) {
-    document.getElementById('barrager_canvas').style.backgroundColor = color
+  setBackgroundColor (color) {
+    let { width } = this.config
+    let realWidth = document.documentElement.clientWidth
+    let canvasWidth = width
+    if (realWidth < width) {
+      canvasWidth = realWidth
+    }
+    let canvasHeight = canvasWidth / 2
+    const wpDom = document.getElementById('barrager_canvas_wp')
+    wpDom.style.backgroundColor = color
+    wpDom.style.height = canvasHeight + 'px'
+    wpDom.style.width = canvasWidth + 'px'
   }
 }
 
 /* eslint-disable no-new */
-new Control()
+isShowController === '1' && new Control()

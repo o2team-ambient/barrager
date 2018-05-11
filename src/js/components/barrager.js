@@ -71,6 +71,9 @@ class BarragerCanvas {
     if (allNum > this.itemNum && showNum > this.hasNum) {
       newItemData.push(this.generateItem())
     }
+    if (allNum <= this.itemNum) {
+      this.destroyBarrger()
+    }
 
     this.itemData = newItemData
   }
@@ -164,6 +167,11 @@ class BarragerCanvas {
     this.opts = opts || this.opts
     this.endBarrager()
     this.init()
+  }
+
+  destroyBarrger () {
+    this.stopBarrager()
+    this.canvas.remove()
   }
 }
 
