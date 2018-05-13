@@ -84,15 +84,20 @@ class BarragerCanvas {
     const baseLong = 8
     const randomIdx = Math.floor(Math.random() * contents.length)
     const content = contents[randomIdx]
-    const realSpeed = Math.sqrt(content.length) / Math.sqrt(baseLong) * speed
+    let realSpeed = Math.sqrt(content.length) / Math.sqrt(baseLong) * speed
+    if (this.width < 720) realSpeed = realSpeed / 2
     const offset = content.length / baseLong * 150
+    let randomX = Math.floor((Math.random()) * this.width)
+    let randomY = Math.floor((Math.random()) * this.height * 0.7)
+    randomX = randomX - randomX % 16
+    randomY = randomY - randomY % 16
     const props = {
       startTime: null,
-      x: direction === 'vertical' ? Math.floor((Math.random()) * this.width) : 0,
-      y: direction === 'horizontal' ? Math.floor((Math.random()) * this.height * 0.7) : 0,
+      x: direction === 'vertical' ? randomX : 0,
+      y: direction === 'horizontal' ? randomY : 0,
       key,
       opacity,
-      speed,
+      speed: realSpeed,
       direction,
       easeType,
       allDistance: this.allDistance + offset * 2,

@@ -1,9 +1,9 @@
 import { O2_AMBIENT_CONFIG } from './components/const'
 window[O2_AMBIENT_CONFIG] = {
   allNum: 200, // 弹幕总数量
-  showNum: 30, // 一屏最多显示的弹幕数量
+  showNum: 20, // 一屏最多显示的弹幕数量
   opacity: 1,
-  speed: 100,
+  speed: 60,
   direction: 'horizontal',
   easeType: 'linear',
   width: 1200,

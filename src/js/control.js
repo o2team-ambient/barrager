@@ -53,7 +53,7 @@ class Control {
     gui.add(config, 'allNum').name('总弹幕数')
     gui.add(config, 'showNum').name('一屏最多的弹幕数')
     gui.add(config, 'opacity', 0, 1).name('弹幕透明度')
-    gui.add(config, 'speed', 50, 1000).name('弹幕速度')
+    gui.add(config, 'speed', 0, 1000).name('弹幕速度')
     gui.add(config, 'width').name('弹幕宽度').onFinishChange(val => {
       window[O2_AMBIENT_MAIN].resetBarrager()
     })
