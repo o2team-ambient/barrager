@@ -1,4 +1,4 @@
-import { Tween } from './utils'
+import { Tween } from './utils/utils'
 
 class BarragerCanvas {
   constructor(canvas, opts) {

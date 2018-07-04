@@ -1,15 +1,15 @@
 {
   "name": "barrager",
   "version": "1.0.0",
-  "description": "挂件库弹幕效果",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "ath2 s",
-    "build": "ath2 build",
-    "test": "",
-    "eslint": "eslint */component */page"
+    "start": "am s",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "liyixin",
+  "license": "ISC",
   "dependencies": {
-    "dat.gui": "^0.7.1",
-    "preloader.js": "^1.0.0"
+    "@o2team/ambient-dat.gui": "^0.7.3"
   }
 }

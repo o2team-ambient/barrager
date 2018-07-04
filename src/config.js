@@ -1,4 +1,4 @@
-import { O2_AMBIENT_CONFIG } from './components/const'
+import { O2_AMBIENT_CONFIG } from './js/utils/const'
 window[O2_AMBIENT_CONFIG] = {
   allNum: 200, // 弹幕总数量
   showNum: 20, // 一屏最多显示的弹幕数量
