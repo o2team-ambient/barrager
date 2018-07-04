@@ -37,12 +37,11 @@ let controlInit = () => {
   class Control extends Controller {
     constructor () {
       super()
-      this.isShow = this.isShowController
       this.config = window[O2_AMBIENT_CONFIG]
       this.otherConfig = new OtherConfig()
       this.initBaseGUI()
       this.initTextureGUI()
-      this.setBackgroundColor(this.otherConfig.backgroundColor)
+      this.isShowController && !this.isAmbientPlat && this.setBackgroundColor(this.otherConfig.backgroundColor)
     }
 
     initBaseGUI () {
@@ -65,7 +64,7 @@ let controlInit = () => {
       gui.addColor(otherConfig, 'backgroundColor').name('背景颜色').onFinishChange(val => {
         Control.setBackgroundColor(val)
       })
-      if (!this.isShow) gui.close()
+      if (!this.isShowController) gui.close()
       this.gui = gui
       this.setGUIzIndex(2)
     }
