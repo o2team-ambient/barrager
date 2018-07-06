@@ -3,7 +3,7 @@
   "demoUrl": "http://jdc.jd.com/demo/ambient/barrager/",
   "title": "barrager",
   "github": "https://github.com/o2team-ambient/barrager",
-  "demoSnippet": "<link href=\"//storage.jd.com/ambient/styles-barrager.css?t=1530693895000\" rel=\"stylesheet\"></link><!-- S 主体内容 -->\n  <div class=\"o2team_ambient_main\">\n    <canvas class='canvas_wp' style='display: block; margin: 0 auto;' id='barrager_canvas_wp'></canvas>\n  </div>\n  <!-- E 主体内容 --><script src=\"//storage.jd.com/ambient/bundle-barrager.js?t=1530693895000\"></script>",
-  "controlUrl": "//storage.jd.com/ambient/control-barrager.js?t=1530693895000",
-  "configUrl": "//storage.jd.com/ambient/config-barrager.js?t=1530693895000"
+  "demoSnippet": "<link href=\"//storage.jd.com/ambient/styles-barrager.css?t=1530867026000\" rel=\"stylesheet\"></link><!-- S 主体内容 -->\n  <div class=\"o2team_ambient_main\">\n    <canvas class='canvas_wp' style='display: block; margin: 0 auto;' id='barrager_canvas_wp'></canvas>\n  </div>\n  <!-- E 主体内容 --><script src=\"//storage.jd.com/ambient/bundle-barrager.js?t=1530867026000\"></script>",
+  "controlUrl": "//storage.jd.com/ambient/control-barrager.js?t=1530867026000",
+  "configUrl": "//storage.jd.com/ambient/config-barrager.js?t=1530867026000"
 }

@@ -16,8 +16,6 @@ const isLoop = getParameterByName('loop') // 是否循环播放
 const isShowController = getParameterByName('controller') // 是否展示控制面板
 const isAmbientPlat = getParameterByName('platform') === '1' // 是否平台环境
 
-window[O2_AMBIENT_CONFIG_KEY] = O2_AMBIENT_CONFIG
-
 class Controller {
   constructor() {
     this.config = window[O2_AMBIENT_CONFIG] || {}
@@ -90,9 +88,13 @@ class Controller {
   resetCanvas() {
     if (this.isAmbientPlat) {
       this.transferProcess()
+      
+      if (window[O2_AMBIENT_CONFIG_KEY]) return
+      window[O2_AMBIENT_CONFIG_KEY] = O2_AMBIENT_CONFIG
+
       return
     }
-    window[O2_AMBIENT_MAIN] && window[O2_AMBIENT_MAIN].reset && typeof window[O2_AMBIENT_MAIN].reset === 'function' && window[O2_AMBIENT_MAIN].reset()
+    // window[O2_AMBIENT_MAIN] && window[O2_AMBIENT_MAIN].reset && typeof window[O2_AMBIENT_MAIN].reset === 'function' && window[O2_AMBIENT_MAIN].reset(window[O2_AMBIENT_CONFIG])
   }
 }
 
