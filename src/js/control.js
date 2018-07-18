@@ -102,4 +102,4 @@ class Control {
 }
 
 /* eslint-disable no-new */
-isShowController === '1' && new Control()
+new Control()

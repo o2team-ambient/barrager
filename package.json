@@ -9,6 +9,7 @@
     "eslint": "eslint */component */page"
   },
   "dependencies": {
+    "@jmfe/o2h5_utils": "^0.0.9",
     "dat.gui": "^0.7.1",
     "preloader.js": "^1.0.0"
   }
