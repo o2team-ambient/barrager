@@ -1,4 +1,4 @@
-import { Tween } from './utils'
+import { Tween } from './utils/util'
 
 class BarragerCanvas {
   constructor(canvas, opts) {
@@ -24,7 +24,7 @@ class BarragerCanvas {
 
   bindEvent () {
     window.addEventListener('resize', () => {
-      this.resetBarrager()
+      this.reset()
     })
   }
 
@@ -160,7 +160,7 @@ class BarragerCanvas {
     this.timer = requestAnimationFrame(this.draw.bind(this))
   }
 
-  endBarrager() {
+  endBarrager () {
     this.itemData = []
     this.itemNum = 0
     this.hasNum = 0
@@ -168,7 +168,7 @@ class BarragerCanvas {
     cancelAnimationFrame(this.timer)
   }
 
-  resetBarrager(opts) {
+  reset (opts) {
     this.opts = opts || this.opts
     this.endBarrager()
     this.init()
