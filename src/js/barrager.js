@@ -1,4 +1,4 @@
-import { Tween } from './utils/utils'
+import { Tween } from './utils/util'
 
 class BarragerCanvas {
   constructor(canvas, opts) {
@@ -29,13 +29,17 @@ class BarragerCanvas {
   }
 
   init () {
-    let { showNum, direction, width } = this.opts
+    let { showNum, direction, width, height } = this.opts
     let realWidth = document.documentElement.clientWidth
+    let realHeight = document.documentElement.clientHeight
     let canvasWidth = width
+    let canvasHeight = height
     if (realWidth < width) {
       canvasWidth = realWidth
     }
-    let canvasHeight = canvasWidth / 2
+    if (realHeight < height) {
+      canvasHeight = realHeight
+    }
     this.canvas.style.width = `${canvasWidth}px`
     this.canvas.style.height = `${canvasHeight}px`
     this.width = this.canvas.width = canvasWidth
@@ -46,7 +50,7 @@ class BarragerCanvas {
     const timeFn = (timeGap) => {
       this.timer = setTimeout(() => {
         this.updateBarrager()
-        showNum > this.hasNum && timeFn(Math.floor(Math.random() * 500))
+        showNum > this.hasNum && timeFn(Math.floor(Math.random() * 1000) + 500)
       }, timeGap)
     }
 
@@ -88,7 +92,7 @@ class BarragerCanvas {
     if (this.width < 720) realSpeed = realSpeed / 2
     const offset = content.length / baseLong * 150
     let randomX = Math.floor((Math.random()) * this.width)
-    let randomY = Math.floor((Math.random()) * this.height * 0.7)
+    let randomY = Math.floor((Math.random()) * this.height * 0.9)
     randomX = randomX - randomX % 16
     randomY = randomY - randomY % 16
     const props = {
@@ -142,8 +146,9 @@ class BarragerCanvas {
   }
 
   draw(timestamp) {
+    const { fontSize } = this.opts
     this.context.clearRect(0, 0, this.width, this.height)
-    this.context.font = '14px 微软雅黑'
+    this.context.font = `${fontSize}px 微软雅黑`
     this.context.textBaseline = 'top'
     this.itemData.forEach((item) => {
       this.drawItem(item, timestamp)

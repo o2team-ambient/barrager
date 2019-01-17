@@ -60,10 +60,15 @@ let controlInit = () => {
       gui.add(config, 'showNum').name('一屏最多的弹幕数')
       gui.add(config, 'opacity', 0, 1).name('弹幕透明度')
       gui.add(config, 'speed', 0, 100).name('弹幕速度')
-      gui.add(config, 'width').name('弹幕宽度')
-      // gui.add(config, 'height').name('弹幕高度').onFinishChange(val => {
-      //   window[O2_AMBIENT_MAIN].resetBarrager()
-      // })
+      gui.add(config, 'width').name('弹幕宽度').onFinishChange(val => {
+        window[O2_AMBIENT_MAIN].reset()
+        this.resetCanvas()
+      })
+      gui.add(config, 'height').name('弹幕高度').onFinishChange(val => {
+        window[O2_AMBIENT_MAIN].reset()
+        this.resetCanvas()
+      })
+      gui.add(config, 'fontSize').name('字体大小')
       gui.add(config, 'easeType', ['linear', 'easeIn', 'easeInOut', 'easeOut']).name('缓动函数').onFinishChange(() => {
         this.resetCanvas()
       })
