@@ -11,5 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "@o2team/ambient-dat.gui": "^0.7.7"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0"
   }
 }
