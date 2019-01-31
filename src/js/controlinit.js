@@ -27,7 +27,7 @@ let controlInit = () => {
           this.isPaly = false
         } else {
           this.isPaly = true
-          window[O2_AMBIENT_MAIN].palyBarrager()
+          window[O2_AMBIENT_MAIN].playBarrager()
         }
       }
     }

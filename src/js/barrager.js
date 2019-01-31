@@ -1,11 +1,12 @@
 import { Tween } from './utils/util'
 
 class BarragerCanvas {
-  constructor(canvas, opts) {
+  constructor (canvas, opts) {
     this.opts = opts
     this.itemData = []
     this.canvas = canvas
     this.context = canvas.getContext('2d')
+    this.visibleState = 'visible'
     this.moveFn = {
       linear: Tween.Linear,
       easeIn: Tween.Quad.easeIn,
@@ -23,9 +24,8 @@ class BarragerCanvas {
   }
 
   bindEvent () {
-    window.addEventListener('resize', () => {
-      this.reset()
-    })
+    window.addEventListener('resize', this.reset)
+    document.addEventListener('visibilitychange', this.toggleBarrager)
   }
 
   init () {
@@ -60,7 +60,7 @@ class BarragerCanvas {
     requestAnimationFrame(this.draw.bind(this))
   }
 
-  updateBarrager(removeItem) {
+  updateBarrager (removeItem) {
     const { allNum, showNum } = this.opts
     let newItemData
 
@@ -82,7 +82,7 @@ class BarragerCanvas {
     this.itemData = newItemData
   }
 
-  generateItem() {
+  generateItem () {
     const { opacity, speed, direction, easeType, contents } = this.opts
     const key = this.getRandomKey()
     const baseLong = 8
@@ -116,11 +116,11 @@ class BarragerCanvas {
     return props
   }
 
-  getRandomKey() {
+  getRandomKey () {
     return `o2h5-randow-${Date.now()}-${this.randomKey++}`
   }
 
-  drawItem(item, timestamp) {
+  drawItem (item, timestamp) {
     const { easeType, allDistance, allTime, direction, opacity, offset } = item
     if (!item.startTime) item.startTime = timestamp
     if (!item.lastTime) item.lastTime = timestamp
@@ -145,7 +145,7 @@ class BarragerCanvas {
     }
   }
 
-  draw(timestamp) {
+  draw (timestamp) {
     const { fontSize } = this.opts
     this.context.clearRect(0, 0, this.width, this.height)
     this.context.font = `${fontSize}px 微软雅黑`
@@ -159,10 +159,21 @@ class BarragerCanvas {
 
   stopBarrager () {
     cancelAnimationFrame(this.timer)
+    this.timer = null
   }
 
-  palyBarrager () {
+  playBarrager () {
     this.timer = requestAnimationFrame(this.draw.bind(this))
+  }
+
+  toggleBarrager = () => {
+    if (this.visibleState === 'visible') {
+      this.visibleState = 'invisible'
+      this.stopBarrager()
+    } else {
+      this.visibleState = 'visible'
+      this.playBarrager()
+    }
   }
 
   endBarrager () {
@@ -173,7 +184,7 @@ class BarragerCanvas {
     cancelAnimationFrame(this.timer)
   }
 
-  reset (opts) {
+  reset = (opts) => {
     this.opts = opts || this.opts
     this.endBarrager()
     this.init()
