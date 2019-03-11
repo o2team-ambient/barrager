@@ -40,7 +40,6 @@ let controlInit = () => {
       this.config = window[O2_AMBIENT_CONFIG]
       this.otherConfig = new OtherConfig()
       this.initBaseGUI()
-      this.initTextureGUI()
       this.isShowController && !this.isAmbientPlat && this.setBackgroundColor(this.otherConfig.backgroundColor)
     }
 
@@ -72,21 +71,11 @@ let controlInit = () => {
       gui.add(config, 'easeType', ['linear', 'easeIn', 'easeInOut', 'easeOut']).name('缓动函数').onFinishChange(() => {
         this.resetCanvas()
       })
+      gui.addGroup(config,'contents').name('弹幕内容').onFinishChange(() => {
+        this.resetCanvas()
+      })
       this.gui = gui
       this.setGUIzIndex(2)
-    }
-
-    initTextureGUI () {
-      const gui = this.gui
-      const contents = this.config.contents
-      const contentsFolder = gui.addFolder('弹幕内容')
-      let index = 0
-      contents.forEach((texture, idx) => {
-        contentsFolder.add(contents, idx).name(`弹幕内容${index++}`)
-      })
-      contentsFolder.open()
-  
-      this.contentsFolder = contentsFolder
     }
   }
 
