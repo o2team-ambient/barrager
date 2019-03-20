@@ -1,7 +1,7 @@
 {
   "author": "liyixin",
-  "demoUrl": "http://jdc.jd.com/demo/ambient/barrager/",
-  "miniDemoUrl": "http://jdc.jd.com/demo/ambient/barrager/index_demo.html",
+  "demoUrl": "//o2team-ambient.jd.com/barrager/dist/",
+  "miniDemoUrl": "//o2team-ambient.jd.com/barrager/dist/index_demo.html",
   "title": "barrager",
   "ambName": "弹幕",
   "github": "https://github.com/o2team-ambient/barrager",
