@@ -6,14 +6,26 @@ import {
 } from './utils/const'
 import Barrager from './barrager'
 
-const wrapper = document.querySelector('.o2team_ambient_main')
+let wrapper = document.querySelector('.o2team_ambient_main')
+if (!wrapper) {
+  wrapper = document.createElement('div')
+  wrapper.setAttribute('class', 'o2team_ambient_main')
+  wrapper.setAttribute('id', 'o2team_ambient_main')
+  const inner = document.createElement('canvas')
+  inner.setAttribute('class', 'canvas_wp')
+  inner.setAttribute('id', 'barrager_canvas_wp')
+  inner.setAttribute('style', 'display: block; margin: 0 auto;')
+  wrapper.insertAdjacentElement('beforeend', inner)
+  document.body.insertAdjacentElement('beforeend', wrapper)
+}
 wrapper.addEventListener('click', () => {
   wrapper.style.display = 'none'
 })
 
 let barrager
 
-function initAmbient () {
+// 初始化函数
+export default function initAmbient () {
   try {
     if (barrager) {
       barrager.endBarrager()
@@ -31,14 +43,3 @@ function initAmbient () {
 
 // 初始化函数
 window[O2_AMBIENT_INIT] = initAmbient
-
-try {
-  // 保证配置读取顺序
-  let csi = setInterval(() => {
-    if (!window[O2_AMBIENT_CONFIG]) return
-    clearInterval(csi)
-    initAmbient()
-  }, 1000)
-} catch (e) {
-  console.log(e) 
-}
