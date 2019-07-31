@@ -1,6 +1,7 @@
 import './css/base.scss'
 import './css/package.scss'
 
+import report from '@o2team/ambient-report'
 import { O2_AMBIENT_CONFIG } from './js/utils/const'
 import initAmbient from './js/ambient'
 
@@ -14,3 +15,8 @@ try {
 } catch (e) {
   console.log(e)
 }
+
+report({
+  account: 'JA2019_1121916',
+  domain: 'jd.com'
+})
