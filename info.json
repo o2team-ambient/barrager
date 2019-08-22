@@ -5,9 +5,9 @@
   "title": "barrager",
   "ambName": "弹幕",
   "github": "https://github.com/o2team-ambient/barrager",
-  "demoSnippet": "<link href=\"//storage.jd.com/ambient/styles-barrager.css?t=1565875388000\" rel=\"stylesheet\"></link><!-- S 主体内容 -->\n  <div class=\"o2team_ambient_main\">\n    <canvas class='canvas_wp' style='display: block; margin: 0 auto;' id='barrager_canvas_wp'></canvas>\n  </div>\n  <!-- E 主体内容 --><script src=\"//storage.jd.com/ambient/bundle-barrager.js?t=1565875388000\"></script>",
-  "controlUrl": "//storage.jd.com/ambient/control-barrager.js?t=1565875388000",
-  "configUrl": "//storage.jd.com/ambient/config-barrager.js?t=1565875388000",
+  "demoSnippet": "<link href=\"//storage.jd.com/ambient/styles-barrager.css?t=1566460352000\" rel=\"stylesheet\"></link><!-- S 主体内容 -->\n  <div class=\"o2team_ambient_main\">\n    <canvas class='canvas_wp' style='display: block; margin: 0 auto;' id='barrager_canvas_wp'></canvas>\n  </div>\n  <!-- E 主体内容 --><script src=\"//storage.jd.com/ambient/bundle-barrager.js?t=1566460352000\"></script>",
+  "controlUrl": "//storage.jd.com/ambient/control-barrager.js?t=1566460352000",
+  "configUrl": "//storage.jd.com/ambient/config-barrager.js?t=1566460352000",
   "placeholderImg": "//storage.jd.com/ambient/barrager_placeholder.png?t=1554281873000",
   "spriteImg": "//storage.jd.com/ambient/barrager_sprite.png?t=1554281873000"
 }
